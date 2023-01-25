@@ -5,9 +5,9 @@ const IMG_PATH = "https://image.tmdb.org/t/p/w500";
 const SEARCHAPI =
     "https://api.themoviedb.org/3/search/movie?api_key=fe2ffaa682ab44b006112c786c90379b&query=";
 
-const main = document.getElementById("section");
-const form = document.getElementById("form");
-const search = document.getElementById("query");
+const main = document.querySelector("#section");
+const form = document.querySelector("#form");
+const search = document.querySelector("#query");
 
 
 const returnMovies = async (url) => {
