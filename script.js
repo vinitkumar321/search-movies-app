@@ -10,48 +10,48 @@ const form = document.getElementById("form");
 const search = document.getElementById("query");
 
 
-const returnMovies = (url) => {
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data.results);
-            data.results.forEach((element) => {
+const returnMovies = async (url) => {
+    const res = await fetch(url);
+    const data = await res.json();
 
-                console.log(element.title + ' - ' + element.poster_path);
-                const div_row = document.createElement('div');
-                div_row.setAttribute('class', 'row');
+    console.log(data.results);
 
-                const div_column = document.createElement('div');
-                div_column.setAttribute('class', 'column');
+    data.results.forEach((element) => {
 
-                const div_card = document.createElement('div');
-                div_card.setAttribute('class', 'card');
+        console.log(element.title + ' - ' + element.poster_path);
+        const div_row = document.createElement('div');
+        div_row.setAttribute('class', 'row');
 
-                const image = document.createElement('img');
-                image.setAttribute('class', 'thumbnail');
-                image.setAttribute('id', 'image');
+        const div_column = document.createElement('div');
+        div_column.setAttribute('class', 'column');
 
-                const title = document.createElement('h3');
-                title.setAttribute('id', 'title');
+        const div_card = document.createElement('div');
+        div_card.setAttribute('class', 'card');
 
-                const center = document.createElement('div');
-                center.setAttribute('id', 'center');
+        const image = document.createElement('img');
+        image.setAttribute('class', 'thumbnail');
+        image.setAttribute('id', 'image');
 
-                title.innerHTML = `${element.title}`;
-                image.src = IMG_PATH + element.poster_path;
+        const title = document.createElement('h3');
+        title.setAttribute('id', 'title');
 
-                center.appendChild(image);
+        const center = document.createElement('div');
+        center.setAttribute('id', 'center');
 
-                div_card.appendChild(center);
-                div_card.appendChild(title);
+        title.innerHTML = `${element.title}`;
+        image.src = IMG_PATH + element.poster_path;
 
-                div_column.appendChild(div_card);
-                div_row.appendChild(div_column);
+        center.appendChild(image);
 
-                main.appendChild(div_row);
+        div_card.appendChild(center);
+        div_card.appendChild(title);
 
-            });
-        });
+        div_column.appendChild(div_card);
+        div_row.appendChild(div_column);
+
+        main.appendChild(div_row);
+
+    });
 }
 
 form.addEventListener("submit", (e) => {
