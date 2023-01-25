@@ -17,39 +17,41 @@ const returnMovies = async (url) => {
     console.log(data.results);
 
     data.results.forEach((element) => {
+        if (element.poster_path !== null) {
 
-        console.log(element.title + ' - ' + element.poster_path);
-        const div_row = document.createElement('div');
-        div_row.setAttribute('class', 'row');
+            console.log(element.title + ' - ' + element.poster_path);
+            const div_row = document.createElement('div');
+            div_row.setAttribute('class', 'row');
 
-        const div_column = document.createElement('div');
-        div_column.setAttribute('class', 'column');
+            const div_column = document.createElement('div');
+            div_column.setAttribute('class', 'column');
 
-        const div_card = document.createElement('div');
-        div_card.setAttribute('class', 'card');
+            const div_card = document.createElement('div');
+            div_card.setAttribute('class', 'card');
 
-        const image = document.createElement('img');
-        image.setAttribute('class', 'thumbnail');
-        image.setAttribute('id', 'image');
+            const image = document.createElement('img');
+            image.setAttribute('class', 'thumbnail');
+            image.setAttribute('id', 'image');
 
-        const title = document.createElement('h3');
-        title.setAttribute('id', 'title');
+            const title = document.createElement('h3');
+            title.setAttribute('id', 'title');
 
-        const center = document.createElement('div');
-        center.setAttribute('id', 'center');
+            const center = document.createElement('div');
+            center.setAttribute('id', 'center');
 
-        title.innerHTML = `${element.title}`;
-        image.src = IMG_PATH + element.poster_path;
+            title.innerHTML = `${element.title}`;
+            image.src = IMG_PATH + element.poster_path;
 
-        center.appendChild(image);
+            center.appendChild(image);
 
-        div_card.appendChild(center);
-        div_card.appendChild(title);
+            div_card.appendChild(center);
+            div_card.appendChild(title);
 
-        div_column.appendChild(div_card);
-        div_row.appendChild(div_column);
+            div_column.appendChild(div_card);
+            div_row.appendChild(div_column);
 
-        main.appendChild(div_row);
+            main.appendChild(div_row);
+        }
 
     });
 }
